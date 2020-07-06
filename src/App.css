@@ -1,3 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400, 700);
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Global Styles */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: teal;
+  font: 16px/24px 'Lato', Arial, sans-serif;
+  text-align: center;
+}
+
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important; /* Hat tip Nick/cssremedy (https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/#comment-1700170) */
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Local Styles */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 5%;
+  width: 100vw;
+  height: 100vh;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Disclosure */
+
+.disclosure-container {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: black;
+  text-align: left;
+}
+
+/* Disclosure - Button */
+
+.disclosure-btn {
+  width: auto;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: black;
+  font-weight: bolder;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.disclosure-btn:active,
+.disclosure-btn:focus,
+.disclosure-btn:hover {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  outline: none;
+}
+/* While expanded: */
+.disclosure-btn[aria-expanded='true']::after {
+  content: '';
+  background: url('./img/expand_less-black-18dp.svg');
+  background-size: cover;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: -0.5rem -0.5rem -0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+/* While collapsed: */
+.disclosure-btn[aria-expanded='false']::after {
+  content: '';
+  background: url('./img/expand_more-black-18dp.svg');
+  background-size: cover;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: -0.5rem -0.5rem -0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+/* Disclosure - Content */
+
+.disclosure-content {
+  display: none;
 }
