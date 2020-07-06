@@ -1,52 +1,47 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 function DisclosureMore(props) {
-  const [isExpanded, setIsExpanded] = useState(false)
+  const { isMoreExpanded } = props
 
-  const handleExpanded = () => {
-    setIsExpanded(!isExpanded)
+  const handleToggle = () => {
+    props.onToggle()
   }
 
   return (
-    <div className="disclosure-container">
-      <h1>Disclosure Design Pattern</h1>
-      <p>
-        A{' '}
-        <a href="https://www.w3.org/TR/wai-aria-practices/#disclosure">
-          disclosure
-        </a>{' '}
-        is a button that controls visibility of a section of content. When the
-        controlled content is hidden, it is often styled as a typical push
-        button with a right-pointing arrow or triangle to hint that activating
-        the button will display additional content. When the content is visible,
-        the arrow or triangle typically points down.
-      </p>
-      <button
-        className="disclosure-btn"
-        aria-expanded={isExpanded}
-        aria-controls="disclosure"
-        onClick={() => handleExpanded()}>
-        Keyboard Interaction
-      </button>
-      <div
-        id="disclosure"
-        className={`disclosure-content ${
-          isExpanded ? 'disclosure-expanded' : 'disclosure-collapsed'
-        }`}>
+    <div className="disclosure-more-container">
+      <h2>WAI-ARIA Roles, States, and Properties</h2>
+      <div>
         <p>When the disclosure control has focus: </p>
         <ul>
           <li>
-            <strong>Enter: </strong>
-            activates the disclosure control and toggles the visibility of the
-            disclosure content.
+            <p>The element that shows and hides the content has role button.</p>
           </li>
           <li>
-            <strong>Space: </strong>
-            activates the disclosure control and toggles the visibility of the
-            disclosure content.
+            <p>
+              When the content is visible, the element with role button has
+              aria-expanded set to true. When the content area is hidden, it is
+              set to false.
+            </p>
+          </li>
+          {/* ToDo: Manage focus to be moved on the top of the revealed content with useRef */}
+          <li
+            id="disclosureMore"
+            className={`disclosure-more-content ${
+              isMoreExpanded
+                ? 'disclosure-more-expanded'
+                : 'disclosure-more-collapsed'
+            }`}>
+            {props.children}
           </li>
         </ul>
+        <button
+          className="disclosure-more-btn"
+          aria-expanded={isMoreExpanded}
+          aria-controls="disclosureMore"
+          onClick={handleToggle}>
+          {isMoreExpanded ? props.expandedLabel : props.collapsedLabel}
+        </button>
       </div>
     </div>
   )
@@ -55,6 +50,7 @@ function DisclosureMore(props) {
 DisclosureMore.propTypes = {
   props: PropTypes.objectOf({
     children: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onToggle: PropTypes.func.isRequired,
   }),
 }
 

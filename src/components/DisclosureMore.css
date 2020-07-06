@@ -1,6 +1,6 @@
 /* Disclosure */
 
-.disclosure-container {
+.disclosure-more-container {
   width: 80%;
   margin: 2rem auto;
   padding: 0.75rem 1.25rem;
@@ -13,7 +13,7 @@
 
 /* Disclosure - Button */
 
-.disclosure-btn {
+.disclosure-more-btn {
   width: auto;
   padding: 0.75rem 1.25rem;
   border: 2px solid black;
@@ -25,16 +25,16 @@
   transition: all 0.2s;
 }
 
-.disclosure-btn:active,
-.disclosure-btn:focus,
-.disclosure-btn:hover {
+.disclosure-more-btn:active,
+.disclosure-more-btn:focus,
+.disclosure-more-btn:hover {
   background-color: black;
   color: white;
   font-weight: bold;
   outline: none;
 }
 /* While expanded: */
-.disclosure-btn[aria-expanded='true']::after {
+.disclosure-more-btn[aria-expanded='true']::after {
   content: '';
   background: url('../img/expand_less-black-18dp.svg');
   background-size: cover;
@@ -46,7 +46,7 @@
   background-color: white;
 }
 /* While collapsed: */
-.disclosure-btn[aria-expanded='false']::after {
+.disclosure-more-btn[aria-expanded='false']::after {
   content: '';
   background: url('../img/expand_more-black-18dp.svg');
   background-size: cover;
@@ -60,14 +60,10 @@
 
 /* Disclosure - Content */
 
-.disclosure-content {
+.disclosure-more-collapsed {
   display: none;
 }
-
-.disclosure-collapsed {
-  display: none;
-}
-
-.disclosure-expanded {
-  display: block;
+/* Specific for <li> */
+.disclosure-more-expanded {
+  display: list-item;
 }
