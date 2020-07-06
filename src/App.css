@@ -116,3 +116,11 @@ body {
 .disclosure-content {
   display: none;
 }
+
+.disclosure-collapsed {
+  display: none;
+}
+
+.disclosure-expanded {
+  display: block;
+}

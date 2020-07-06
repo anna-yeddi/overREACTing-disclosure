@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 function Disclosure(props) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  const handleExpanded = () => {
+    setIsExpanded(!isExpanded)
+  }
+
   return (
     <div className="disclosure-container">
       <h1>Disclosure Design Pattern</h1>
@@ -18,11 +24,16 @@ function Disclosure(props) {
       </p>
       <button
         className="disclosure-btn"
-        aria-expanded="false"
-        aria-controls="disclosure">
+        aria-expanded={isExpanded}
+        aria-controls="disclosure"
+        onClick={() => handleExpanded()}>
         Keyboard Interaction
       </button>
-      <div id="disclosure" className="disclosure-content">
+      <div
+        id="disclosure"
+        className={`disclosure-content ${
+          isExpanded ? 'disclosure-expanded' : 'disclosure-collapsed'
+        }`}>
         <p>When the disclosure control has focus: </p>
         <ul>
           <li>
