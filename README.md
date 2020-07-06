@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Disclosure React Component
+
+Based on [the W3C WAI ARIA 1.2 Disclosure (Show/Hide) design pattern](https://www.w3.org/TR/wai-aria-practices/#disclosure).
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) in July 2020.
 
 ## Available Scripts
 
